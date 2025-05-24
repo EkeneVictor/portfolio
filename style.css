@@ -303,3 +303,73 @@ html {
       cursor: pointer;
     }
   }
+
+  /* Password Generator Styles */
+#password-output {
+    min-height: 2.5rem;
+    word-break: break-all;
+  }
+  
+  /* Weather Widget Styles */
+.weather-current {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  .forecast-day {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+  }
+  
+  .forecast-day p {
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+  }
+  
+  #weather-result {
+    transition: all 0.3s ease;
+  }
+  
+  /* Responsive Project Grid */
+  @media (max-width: 768px) {
+    .project-demo {
+      min-height: 180px;
+    }
+  }
+
+ /* Loading Spinner */
+.loading-spinner {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 3px solid #fbbf24;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Weather Card */
+  .weather-current {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  .unit-toggle {
+    transition: all 0.2s;
+    min-width: 50px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  

@@ -260,5 +260,216 @@ hoverArea.addEventListener('click', () => {
   }
 });
 
+// Password Generator
+const generateBtn = document.getElementById('generate-pw');
+const pwOutput = document.getElementById('password-output');
+
+generateBtn.addEventListener('click', () => {
+  const length = parseInt(document.getElementById('pw-length').value) || 12;
+  const hasUpper = document.getElementById('uppercase').checked;
+  const hasNumbers = document.getElementById('numbers').checked;
+  
+  const lower = 'abcdefghijklmnopqrstuvwxyz';
+  const upper = hasUpper ? 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' : '';
+  const numbers = hasNumbers ? '0123456789' : '';
+  
+  const chars = lower + upper + numbers;
+  let password = '';
+  
+  for(let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * chars.length);
+    password += chars[randomIndex];
+  }
+  
+  pwOutput.textContent = password || 'Select options';
+});
+
+// Weather App - Complete Version
+let lastWeatherData = null;
+let currentUnit = 'c';
+
+// DOM Elements
+const weatherBtn = document.getElementById('get-weather');
+const locateBtn = document.getElementById('locate-me');
+const unitC = document.getElementById('unit-c');
+const unitF = document.getElementById('unit-f');
+
+// Event Listeners
+weatherBtn.addEventListener('click', () => {
+  const location = document.getElementById('weather-location').value.trim();
+  if (location) fetchWeather(location);
+});
+
+locateBtn.addEventListener('click', getLocation);
+
+unitC.addEventListener('click', () => setUnit('c'));
+unitF.addEventListener('click', () => setUnit('f'));
+
+// Main Functions
+async function fetchWeather(location) {
+  const resultDiv = document.getElementById('weather-result');
+  resultDiv.innerHTML = '<div class="loading-spinner"></div>';
+  
+  try {
+    const API_KEY = '280929b70ce74c66ab314922251103'; // Replace with your key
+    const response = await fetch(
+      `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${location}`
+    );
+    const data = await response.json();
+    
+    if (data.error) {
+      resultDiv.innerHTML = `<p class="text-red-400">${data.error.message}</p>`;
+      return;
+    }
+    
+    lastWeatherData = data;
+    renderWeather(data);
+  } catch (error) {
+    resultDiv.innerHTML = '<p class="text-red-400">Network error</p>';
+  }
+}
+
+function renderWeather(data) {
+  const { location, current } = data;
+  const resultDiv = document.getElementById('weather-result');
+  
+  const temp = currentUnit === 'c' ? current.temp_c : current.temp_f;
+  const unitSymbol = currentUnit === 'c' ? '°C' : '°F';
+  
+  resultDiv.innerHTML = `
+    <div class="weather-current">
+      <h4 class="text-lg">${location.name}, ${location.country}</h4>
+      <div class="flex items-center justify-center gap-4 my-2">
+        <img src="https:${current.condition.icon}" alt="${current.condition.text}" class="h-12">
+        <p class="text-3xl">${temp}${unitSymbol}</p>
+      </div>
+      <p>${current.condition.text}</p>
+      <p class="text-sm mt-2">Humidity: ${current.humidity}% | Wind: ${current.wind_kph} km/h</p>
+    </div>
+  `;
+}
+
+function getLocation() {
+  if (navigator.geolocation) {
+    document.getElementById('weather-result').innerHTML = '<p class="text-blue-300">Detecting location...</p>';
+    
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        fetchWeather(`${position.coords.latitude},${position.coords.longitude}`);
+      },
+      (error) => {
+        document.getElementById('weather-result').innerHTML = 
+          '<p class="text-yellow-400">Allow location access or search manually</p>';
+      }
+    );
+  } else {
+    alert("Geolocation is not supported by your browser");
+  }
+}
+
+function setUnit(unit) {
+  currentUnit = unit;
+  unitC.classList.toggle('bg-blue-800', unit === 'c');
+  unitF.classList.toggle('bg-blue-800', unit === 'f');
+  
+  if (lastWeatherData) renderWeather(lastWeatherData);
+}
+
+// Usage when fetching:
+resultDiv.innerHTML = '<div class="loading-spinner"></div>';
+
+// Quote Generator
+const quoteText = document.getElementById('quote-text');
+const quoteAuthor = document.getElementById('quote-author');
+const newQuoteBtn = document.getElementById('new-quote');
+const tweetBtn = document.getElementById('tweet-quote');
+
+async function fetchQuote() {
+  try {
+    quoteText.textContent = "Loading...";
+    const response = await fetch('https://api.quotable.io/random');
+    const data = await response.json();
+    
+    quoteText.textContent = `"${data.content}"`;
+    quoteAuthor.textContent = `— ${data.author}`;
+    
+    // Update Twitter share link
+    tweetBtn.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+      `"${data.content}" - ${data.author}`
+    )}`;
+  } catch (error) {
+    quoteText.textContent = "Failed to load quote. Try again!";
+    quoteAuthor.textContent = "";
+  }
+}
+
+newQuoteBtn.addEventListener('click', fetchQuote);
+fetchQuote(); // Load first quote on page load
+
+// Dictionary App
+const wordInput = document.getElementById('word-input');
+const searchBtn = document.getElementById('search-word');
+const dictResult = document.getElementById('dictionary-result');
+
+searchBtn.addEventListener('click', fetchDefinition);
+
+async function fetchDefinition() {
+  const word = wordInput.value.trim();
+  if (!word) return;
+
+  dictResult.innerHTML = '<div class="loading-spinner"></div>';
+  
+  try {
+    const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+    const data = await response.json();
+    
+    if (data.title === "No Definitions Found") {
+      dictResult.innerHTML = `<p class="text-red-400">No definitions found for "${word}"</p>`;
+      return;
+    }
+    
+    const entry = data[0];
+    let html = `
+      <h4 class="text-lg font-semibold">${entry.word}</h4>
+      <p class="text-blue-300 mb-2">${entry.phonetic || ''}</p>
+    `;
+    
+    // Audio pronunciation
+    if (entry.phonetics?.length) {
+      const audio = entry.phonetics.find(p => p.audio)?.audio;
+      if (audio) {
+        html += `
+          <button onclick="new Audio('${audio}').play()" 
+                  class="flex items-center gap-1 text-sm mb-3">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+            </svg>
+            Hear pronunciation
+          </button>
+        `;
+      }
+    }
+    
+    // Definitions
+    entry.meanings.forEach(meaning => {
+      html += `
+        <div class="mb-4">
+          <p class="font-semibold">${meaning.partOfSpeech}</p>
+          <ul class="list-disc pl-5 mt-1">
+            ${meaning.definitions.slice(0, 3).map(def => 
+              `<li class="mb-1">${def.definition}</li>`
+            ).join('')}
+          </ul>
+        </div>
+      `;
+    });
+    
+    dictResult.innerHTML = html;
+  } catch (error) {
+    dictResult.innerHTML = `<p class="text-red-400">Error fetching definition</p>`;
+  }
+}
+
 // Load todos on page load
 loadTodos();

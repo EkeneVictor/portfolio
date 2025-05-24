@@ -41,9 +41,9 @@
   <section id="home" class="hero-section text-center relative" data-aos="fade-in">
     <!-- Video Background -->
     <video autoplay muted loop playsinline class="absolute w-full h-full object-cover z-0">
-      <source src="background-video.mp4" type="video/mp4">
+      <source src="assets/background-video.mp4" type="video/mp4">
       <!-- Fallback image if video doesn't load -->
-      <img src="fallback-image.jpg" alt="Background" class="absolute w-full h-full object-cover">
+      <img src="assets/fallback-image.jpg" alt="Background" class="absolute w-full h-full object-cover">
     </video>
     
     <!-- Gradient Overlay -->
@@ -104,6 +104,65 @@
           </div>
         </div>
       </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="p-4 bg-gradient-to-tr from-green-900 to-emerald-800 rounded-lg shadow-lg hover:scale-105 transition-transform h-full">
+          <h3 class="text-xl text-yellow-300 mb-3">Password Generator</h3>
+          <div class="project-demo mb-4 p-4 bg-gray-800 rounded">
+            <div class="grid gap-2">
+              <input type="number" id="pw-length" placeholder="Length (8-32)" min="8" max="32" class="p-2 rounded bg-gray-700">
+              <div class="flex gap-2">
+                <label class="flex items-center">
+                  <input type="checkbox" id="uppercase" checked class="mr-2"> A-Z
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" id="numbers" checked class="mr-2"> 0-9
+                </label>
+              </div>
+              <button id="generate-pw" class="bg-yellow-400 text-black p-2 rounded">Generate</button>
+              <div id="password-output" class="p-2 bg-gray-900 rounded text-center font-mono"></div>
+            </div>
+          </div>
+          <p class="text-white mb-3">Customizable secure password generator.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-blue-800 px-3 py-1 rounded-full text-sm">Security</span>
+            <span class="bg-blue-800 px-3 py-1 rounded-full text-sm">Algorithms</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Weather App Card -->
+<div class="col-md-6 col-lg-4">
+  <div class="p-4 bg-gradient-to-tr from-blue-800 to-cyan-900 rounded-lg shadow-lg h-full">
+    <h3 class="text-xl text-yellow-300 mb-3">Live Weather</h3>
+    <div class="project-demo mb-4 p-4 bg-gray-800 rounded">
+      <!-- Location Input -->
+      <input type="text" id="weather-location" placeholder="City or ZIP" class="w-full p-2 rounded bg-gray-700 mb-2">
+      
+      <!-- Unit Toggle -->
+      <div class="flex justify-center gap-2 mb-3">
+        <button id="unit-c" class="unit-toggle bg-blue-800 px-3 py-1 rounded">°C</button>
+        <button id="unit-f" class="unit-toggle px-3 py-1 rounded">°F</button>
+      </div>
+      
+      <!-- Buttons -->
+      <div class="flex gap-2">
+        <button id="get-weather" class="bg-yellow-400 text-black p-2 rounded flex-1">
+          Search
+        </button>
+        <button id="locate-me" class="bg-gray-600 p-2 rounded" title="Use my location">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Results Container -->
+      <div id="weather-result" class="mt-4 min-h-[120px]"></div>
+    </div>
+  </div>
+</div>
 
       <!-- Form Validator -->
       <div class="col-md-6 col-lg-4">
@@ -176,6 +235,7 @@
           </div>
         </div>
       </div>
+
 
       <!-- To-Do List -->
       <div class="col-md-6 col-lg-4">
