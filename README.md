@@ -28,12 +28,6 @@ This is a personal portfolio website created as part of the **ICT 118 Web Develo
    ```
 2. Open `index.html` in your browser.
 
-## 🚀 Deployment
-To deploy using GitHub Pages:
-1. Push your code to GitHub.
-2. Go to the repo → Settings → Pages.
-3. Select `main` branch and root directory → Save.
-4. Your site will be live at `https://ekenevictor.github.io/portfolio/`.
 
 ## ⚙️ Challenges & Solutions
 - Built mobile-first to ensure responsiveness.
