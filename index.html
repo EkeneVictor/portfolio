@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+  <title>Okwuchukwu Ekene Victor - Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=WDXL+Lubrifont+TC&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --main-font: 'Funnel Display', 'WDXL Lubrifont TC', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-black text-white">
+  <header class="bg-gradient-to-r from-blue-900 to-black py-5 shadow-md">
+    <nav class="container flex justify-between items-center text-white">
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+      <h1 class="text-3xl font-bold text-yellow-400 hover:scale-105 transition-transform">Okwuchukwu Ekene Victor</h1>
+      <ul class="flex gap-5 text-lg">
+        <li><a class="hover:text-yellow-400 transition" href="#home">Home</a></li>
+        <li><a class="hover:text-yellow-400 transition" href="#about">About</a></li>
+        <li><a class="hover:text-yellow-400 transition" href="#projects">Projects</a></li>
+        <li><a class="hover:text-yellow-400 transition" href="#skills">Skills</a></li>
+        <li><a class="hover:text-yellow-400 transition" href="#experience">Experience</a></li>
+        <li><a class="hover:text-yellow-400 transition" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="hero-section text-center relative" data-aos="fade-in">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline class="absolute w-full h-full object-cover z-0">
+      <source src="assets/background-video.mp4" type="video/mp4">
+      <!-- Fallback image if video doesn't load -->
+      <img src="assets/fallback-image.jpg" alt="Background" class="absolute w-full h-full object-cover">
+    </video>
+    
+    <!-- Gradient Overlay -->
+    <div class="gradient-overlay"></div>
+    
+    <!-- Content Container -->
+    <div class="relative z-10 py-32 px-4">
+      <h2 class="text-4xl md:text-6xl font-bold text-yellow-400 animate-pulse">Welcome to my Portfolio</h2>
+      <p class="text-xl mt-4 text-blue-300">Frontend Developer | Creative Technologist</p>
+      <a href="#projects" class="mt-6 inline-block px-6 py-3 bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-300 transition-transform transform hover:scale-110">View Projects</a>
+    </div>
+</section>
+    
+    <!-- Video Restart on Hover (JavaScript will be added below) -->
+    <div class="video-hover-area absolute inset-0 z-5 opacity-0 w-full h-full"></div>
+  </section>
+
+  <section id="about" class="container py-20" data-aos="fade-right">
+    <h2 class="text-3xl font-semibold text-yellow-400 mb-4">About Me</h2>
+    <p class="text-lg text-gray-300">Hi! I'm Okwuchukwu Ekene Victor, a passionate frontend developer with a love for crafting beautiful and functional user experiences. I specialize in HTML, CSS, and JavaScript and strive to build responsive and engaging interfaces.</p>
+  </section>
+
+  <!-- Updated Projects Section -->
+<section id="projects" class="bg-gray-900 py-20" data-aos="fade-up">
+  <div class="container">
+    <h2 class="text-3xl font-semibold text-yellow-400 mb-10 text-center">Featured Projects</h2>
+    <div class="row g-4">
+      <!-- Dark Mode Toggle -->
+      <div class="col-md-6 col-lg-4">
+        <div class="p-4 bg-gradient-to-tr from-blue-900 to-black rounded-lg shadow-lg hover:scale-105 transition-transform h-full">
+          <h3 class="text-xl text-yellow-300 mb-3">Dark Mode Toggle</h3>
+          <div class="project-demo mb-4 p-4 bg-gray-800 rounded">
+            <div class="flex justify-center items-center">
+              <button id="darkModeToggle" class="px-4 py-2 bg-yellow-400 text-black rounded-full">Toggle Dark Mode</button>
+            </div>
+          </div>
+          <p class="text-white mb-3">Interactive theme switcher with localStorage persistence.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-blue-800 px-3 py-1 rounded-full text-sm">JavaScript</span>
+            <span class="bg-blue-800 px-3 py-1 rounded-full text-sm">CSS</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Countdown Timer -->
+      <div class="col-md-6 col-lg-4">
+        <div class="p-4 bg-gradient-to-tr from-black to-blue-800 rounded-lg shadow-lg hover:scale-105 transition-transform h-full">
+          <h3 class="text-xl text-yellow-300 mb-3">Launch Countdown</h3>
+          <div class="project-demo mb-4 p-4 bg-gray-800 rounded text-center">
+            <div id="countdown" class="text-2xl font-mono">
+              <span id="days">00</span>d <span id="hours">00</span>h <span id="minutes">00</span>m <span id="seconds">00</span>s
+            </div>
+          </div>
+          <p class="text-white mb-3">Dynamic countdown to New Year 2026.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-blue-800 px-3 py-1 rounded-full text-sm">Date API</span>
+            <span class="bg-blue-800 px-3 py-1 rounded-full text-sm">Intervals</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Validator -->
+      <div class="col-md-6 col-lg-4">
+        <div class="p-4 bg-gradient-to-tr from-blue-800 to-purple-900 rounded-lg shadow-lg hover:scale-105 transition-transform h-full">
+          <h3 class="text-xl text-yellow-300 mb-3">Form Validator</h3>
+          <div class="project-demo mb-4 p-4 bg-gray-800 rounded">
+            <form id="demo-form" class="grid gap-2">
+              <input type="text" placeholder="Username" class="p-2 rounded bg-gray-700" required minlength="3">
+              <input type="email" placeholder="Email" class="p-2 rounded bg-gray-700" required>
+              <button type="submit" class="bg-yellow-400 text-black p-2 rounded">Submit</button>
+              <div id="form-error" class="text-red-400 text-sm"></div>
+            </form>
+          </div>
+          <p class="text-white mb-3">Real-time form validation with error feedback.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-blue-800 px-3 py-1 rounded-full text-sm">Validation</span>
+            <span class="bg-blue-800 px-3 py-1 rounded-full text-sm">Regex</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typing Animation -->
+      <div class="col-md-6 col-lg-4">
+        <div class="p-4 bg-gradient-to-tr from-purple-900 to-pink-800 rounded-lg shadow-lg hover:scale-105 transition-transform h-full">
+          <h3 class="text-xl text-yellow-300 mb-3">Typing Animation</h3>
+          <div class="project-demo mb-4 p-4 bg-gray-800 rounded text-center">
+            <div id="typing-text" class="h-12 text-lg"></div>
+            <button id="typing-btn" class="mt-2 px-3 py-1 bg-yellow-400 text-black rounded text-sm">Restart</button>
+          </div>
+          <p class="text-white mb-3">Simulates typing effect for text display.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-blue-800 px-3 py-1 rounded-full text-sm">Animation</span>
+            <span class="bg-blue-800 px-3 py-1 rounded-full text-sm">Timing</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text-to-Speech -->
+      <div class="col-md-6 col-lg-4">
+        <div class="p-4 bg-gradient-to-tr from-pink-800 to-red-900 rounded-lg shadow-lg hover:scale-105 transition-transform h-full">
+          <h3 class="text-xl text-yellow-300 mb-3">Text-to-Speech</h3>
+          <div class="project-demo mb-4 p-4 bg-gray-800 rounded">
+            <textarea id="speech-text" class="w-full p-2 rounded bg-gray-700 mb-2" placeholder="Enter text"></textarea>
+            <button id="speak-btn" class="w-full bg-yellow-400 text-black p-2 rounded">Speak</button>
+          </div>
+          <p class="text-white mb-3">Converts written text to spoken words.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-blue-800 px-3 py-1 rounded-full text-sm">Web Speech API</span>
+            <span class="bg-blue-800 px-3 py-1 rounded-full text-sm">Synthesis</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tip Calculator -->
+      <div class="col-md-6 col-lg-4">
+        <div class="p-4 bg-gradient-to-tr from-red-900 to-orange-800 rounded-lg shadow-lg hover:scale-105 transition-transform h-full">
+          <h3 class="text-xl text-yellow-300 mb-3">Tip Calculator</h3>
+          <div class="project-demo mb-4 p-4 bg-gray-800 rounded">
+            <div class="grid gap-2">
+              <input type="number" id="bill-amount" placeholder="Bill amount" class="p-2 rounded bg-gray-700">
+              <input type="number" id="tip-percent" placeholder="Tip %" class="p-2 rounded bg-gray-700" value="15">
+              <button id="calculate-tip" class="bg-yellow-400 text-black p-2 rounded">Calculate</button>
+              <div id="tip-result" class="text-center mt-2"></div>
+            </div>
+          </div>
+          <p class="text-white mb-3">Calculates tip amounts and total bill.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-blue-800 px-3 py-1 rounded-full text-sm">Calculations</span>
+            <span class="bg-blue-800 px-3 py-1 rounded-full text-sm">DOM</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- To-Do List -->
+      <div class="col-md-6 col-lg-4">
+        <div class="p-4 bg-gradient-to-tr from-orange-800 to-yellow-800 rounded-lg shadow-lg hover:scale-105 transition-transform h-full">
+          <h3 class="text-xl text-yellow-300 mb-3">To-Do List</h3>
+          <div class="project-demo mb-4 p-4 bg-gray-800 rounded">
+            <div class="flex mb-2">
+              <input type="text" id="todo-input" placeholder="New task" class="flex-grow p-2 rounded-l bg-gray-700">
+              <button id="add-todo" class="bg-yellow-400 text-black px-3 py-2 rounded-r">Add</button>
+            </div>
+            <ul id="todo-list" class="space-y-2 max-h-40 overflow-y-auto"></ul>
+          </div>
+          <p class="text-white mb-3">Manage tasks with add/complete functionality.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-blue-800 px-3 py-1 rounded-full text-sm">CRUD</span>
+            <span class="bg-blue-800 px-3 py-1 rounded-full text-sm">LocalStorage</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section id="skills" class="container py-20" data-aos="zoom-in">
+    <h2 class="text-3xl font-semibold text-yellow-400 mb-6">Skills</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <span class="bg-blue-800 p-4 rounded shadow text-center hover:scale-110 transition">HTML</span>
+      <span class="bg-blue-800 p-4 rounded shadow text-center hover:scale-110 transition">CSS</span>
+      <span class="bg-blue-800 p-4 rounded shadow text-center hover:scale-110 transition">JavaScript</span>
+      <span class="bg-blue-800 p-4 rounded shadow text-center hover:scale-110 transition">Bootstrap</span>
+    </div>
+  </section>
+
+  <section id="experience" class="bg-gray-900 py-20" data-aos="fade-left">
+    <div class="container">
+      <h2 class="text-3xl font-semibold text-yellow-400 mb-4">Experience</h2>
+      <p class="text-white"><strong>New Horizons ICT Resource Center</strong><br />Frontend Developer - 2025</p>
+    </div>
+  </section>
+
+  <section id="contact" class="container py-20" data-aos="fade-up">
+    <h2 class="text-3xl font-semibold text-yellow-400 mb-6">Contact Me</h2>
+    <form id="contact-form" class="grid gap-4 max-w-xl mx-auto">
+      <input type="text" name="name" placeholder="Your Name" required class="p-3 rounded bg-gray-800 text-white" />
+      <input type="email" name="email" placeholder="Your Email" required class="p-3 rounded bg-gray-800 text-white" />
+      <textarea name="message" placeholder="Your Message" required class="p-3 rounded bg-gray-800 text-white"></textarea>
+      <button type="submit" class="bg-yellow-400 text-black px-4 py-2 rounded hover:bg-yellow-300">Send</button>
+    </form>
+  </section>
+
+  <footer class="bg-gradient-to-r from-blue-900 to-black text-center text-gray-400 py-4">
+    <p>&copy; <span id="year"></span> Okwuchukwu Ekene Victor</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+</body>
+</html>
