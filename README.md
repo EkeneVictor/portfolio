@@ -1,5 +1,5 @@
 
-# Okwuchukwu Ekene Victor - Frontend Portfolio
+# cipher - Frontend Portfolio
 
 This is a personal portfolio website created as part of the **ICT 118 Web Development Project** at Bells University of Technology, in collaboration with New Horizons.
 
